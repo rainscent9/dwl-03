@@ -46,7 +46,7 @@ def get_data_api():
         print(response.json())
         # response_dict = json.loads(response.quoteResponse.result)
         r = response.json()['quoteResponse']['result'][0]
-        return response_dict
+        return r
     except requests.exceptions.HTTPError as errh:
         logging.error('HTTP Error occured')
     except requests.exceptions.ConnectionError as errc:
