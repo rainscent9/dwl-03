@@ -43,8 +43,6 @@ def get_data_api():
         response.raise_for_status()
         # Code here will only run if the request is successful
         logging.info('The request was a success!')
-        print(response.json())
-        # response_dict = json.loads(response.quoteResponse.result)
         r = response.json()['quoteResponse']['result'][0]
         return r
     except requests.exceptions.HTTPError as errh:
