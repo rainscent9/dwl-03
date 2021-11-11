@@ -58,7 +58,7 @@ def get_data_api():
 dag = DAG(
     'yahoofinance',
     schedule_interval='@hourly',
-    start_date=datetime.datetime.now() - datetime.timedelta(days=1)
+    start_date=datetime.datetime.now()
 )
 
 greet_task = PythonOperator(
@@ -72,6 +72,7 @@ create_table = PostgresOperator(
     dag=dag,
     postgres_conn_id="datalake_eldorado",
     sql='sql/create_table_yahoofin.sql'
+    # sql = 'CREATE TABLE IF NOT EXISTS yahoofin (yahoofin_raw text, yahoofin_date datetime)'
 )
 
 insert_values = PostgresOperator(
@@ -79,6 +80,7 @@ insert_values = PostgresOperator(
     postgres_conn_id="datalake_eldorado",
     dag=dag,
     sql='sql/insert_values_yahoofin.sql',
+    # sql='INSERT INTO yahoofin(yahoofin_raw, yahoofin_date)'
     params=get_data_api()
 )
 
