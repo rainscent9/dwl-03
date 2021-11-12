@@ -1,4 +1,6 @@
 CREATE TABLE IF NOT EXISTS yahoofin (
+    symbol text,
+    inserted timestamp(0) without time zone NOT NULL,
     language text,
     region text,
     quoteType text,

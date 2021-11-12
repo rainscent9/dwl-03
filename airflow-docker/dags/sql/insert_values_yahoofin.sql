@@ -1,4 +1,6 @@
 INSERT INTO yahoofin(
+    symbol,
+    inserted,
     language,
     region,
     quoteType,
@@ -47,6 +49,8 @@ INSERT INTO yahoofin(
     shortName,
     symbol
 ) VALUES (
+    'CS',
+    CURRENT_TIMESTAMP(0),
     '{{params.language}}',
     '{{params.region}}',
     '{{params.quoteType}}',

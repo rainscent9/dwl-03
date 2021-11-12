@@ -1,7 +1,7 @@
 '''
 Description:
-This dag pulls periodically stock prices from YahooFinance API
-and stores it in a defined Postgres database.
+This dag pulls periodically stock prices from FinnHub API
+and stores it in a Postgres database.
 
 Postgres handling from airflow:
 Write:      PostgresOperator
@@ -9,11 +9,6 @@ Read:       PostgresHook
 
 Info, structure:
 The SQL commands are stored in folder sql to make the code more readable.
-
-Resources:
-https://marclamberti.com/blog/postgres-operator-airflow/
-https://www.nylas.com/blog/use-python-requests-module-rest-apis/
-https://www.yahoofinanceapi.com/tutorial
 '''
 
 import datetime
@@ -31,55 +26,49 @@ def start():
     logging.info('Starting the DAG YahooFinance API')
 
 def get_data_api():
-    url = "https://yfapi.net/v6/finance/quote?"
-    querystring = {'symbols': 'CS',  # if many: 'symbols':'AAPL,BTC-USD,EURUSD=X'
-                   'region': 'US',
-                   'lang': 'en-US'}
-    headers = {'accept': 'application/json',
-               'x-api-key': 'TZ1z5Ndk7010iPfALDXa15jAIuLnzLVD2DSFik9e'}
+    url = 'https://finnhub.io/api/v1/quote?'
+    querystring = {'symbol': 'CS',
+                   'token': 'c66gr5qad3icr57jgts0'}
     try:
-        logging.info('Start reading API')
-        response = requests.get(url, headers=headers, params=querystring, timeout=5)
+        response = requests.get(url, params=querystring, timeout=5)
         response.raise_for_status()
         # Code here will only run if the request is successful
-        logging.info('The request was a success!')
-        r = response.json()['quoteResponse']['result'][0]
-        return r
+        print('The request was a success!')
+        return response.json()
     except requests.exceptions.HTTPError as errh:
-        logging.error('HTTP Error occured')
+        print('HTTP Error occured')
     except requests.exceptions.ConnectionError as errc:
-        logging.error('Connection Error occured')
+        print('Connection Error occured')
     except requests.exceptions.Timeout as errt:
-        logging.error('Timeout Error occured')
+        print('Timeout Error occured')
     except requests.exceptions.RequestException as err:
-        logging.error('Request Exception Error occured')
-
+        print('Request Exception Error occured')
 
 dag = DAG(
-    'yahoofinance',
-    schedule_interval='@daily',
+    'finnhub_dag',
+    schedule_interval='@hourly',
     start_date=datetime.datetime.now()
 )
 
 greet_task = PythonOperator(
-   task_id="start_task",
+   task_id='start_task',
    python_callable=start,
    dag=dag
 )
 
 create_table = PostgresOperator(
-    task_id="create_table",
+    task_id='create_table',
     dag=dag,
-    postgres_conn_id="datalake_eldorado",
-    sql='sql/create_table_yahoofin.sql'
+    postgres_conn_id='datalake_eldorado',
+    sql='sql/create_table_finnhub.sql'
     # sql = 'CREATE TABLE IF NOT EXISTS yahoofin (yahoofin_raw text, yahoofin_date datetime)'
 )
 
 insert_values = PostgresOperator(
-    task_id="insert_values",
-    postgres_conn_id="datalake_eldorado",
+    task_id='insert_values',
+    postgres_conn_id='datalake_eldorado',
     dag=dag,
-    sql='sql/insert_values_yahoofin.sql',
+    sql='sql/insert_values_finnhub.sql',
     # sql='INSERT INTO yahoofin(yahoofin_raw, yahoofin_date)'
     params=get_data_api()
 )
