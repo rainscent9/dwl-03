@@ -12,11 +12,9 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.hooks.postgres_hook import PostgresHook
 
 
-def start():
-    logging.info('Starting the DAG')
-
 
 def extract_load_records():
+    logging.info('extract & load tweets into Postgres')
     # connecting to twitter api
     consumer_key = "Sg3OdyEDlPJztqKog2OdXKkKq"
     consumer_secret = "T4kNzEyXR3TjviyO6KszpLo04XIQ1xgVBY6vjjz9WOwqUFZYeK"
@@ -95,14 +93,8 @@ def extract_load_records():
 
 dag = DAG(
     'twitter_tweets',
-    schedule_interval='@daily',
-    start_date=datetime.datetime.now() - datetime.timedelta(days=1)
-)
-
-greet_task = PythonOperator(
-    task_id="start_task",
-    python_callable=start,
-    dag=dag
+    schedule_interval='@hourly',
+    start_date=datetime.datetime.now()
 )
 
 create_table = PostgresOperator(
@@ -119,5 +111,5 @@ extract_load = PythonOperator(
     dag=dag)
 
 
-greet_task >> create_table >> extract_load
+create_table >> extract_load
 
