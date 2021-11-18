@@ -16,6 +16,7 @@ import logging
 import requests
 import json
 
+from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator # Write to Postgres
@@ -44,11 +45,19 @@ def get_data_api():
     except requests.exceptions.RequestException as err:
         print('Request Exception Error occured')
 
+default_args = {
+    'depends_on_past': True
+}
+
 dag = DAG(
-    'finnhub_dag',
-    schedule_interval='@hourly',
-    start_date=datetime.datetime.now()
+    dag_id='finnhub_dag',
+    schedule_interval='1 * * * *',
+    start_date=datetime(2021, 1, 1),
+    catchup=False,
+    default_args=default_args,
+    tags=['finnhub'],
 )
+
 
 greet_task = PythonOperator(
    task_id='start_task',
@@ -61,7 +70,6 @@ create_table = PostgresOperator(
     dag=dag,
     postgres_conn_id='datalake_eldorado',
     sql='sql/create_table_finnhub.sql'
-    # sql = 'CREATE TABLE IF NOT EXISTS yahoofin (yahoofin_raw text, yahoofin_date datetime)'
 )
 
 insert_values = PostgresOperator(
@@ -69,7 +77,6 @@ insert_values = PostgresOperator(
     postgres_conn_id='datalake_eldorado',
     dag=dag,
     sql='sql/insert_values_finnhub.sql',
-    # sql='INSERT INTO yahoofin(yahoofin_raw, yahoofin_date)'
     params=get_data_api()
 )
 

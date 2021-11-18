@@ -21,6 +21,7 @@ import logging
 import requests
 import json
 
+from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator # Write to Postgres
@@ -55,10 +56,17 @@ def get_data_api():
         logging.error('Request Exception Error occured')
 
 
+default_args = {
+    'depends_on_past': True
+}
+
 dag = DAG(
-    'yahoofinance',
+    dag_id='yahoofinance_dag',
     schedule_interval='@daily',
-    start_date=datetime.datetime.now()
+    start_date=datetime(2021, 1, 1),
+    catchup=False,
+    default_args=default_args,
+    tags=['yahoofinance'],
 )
 
 greet_task = PythonOperator(
