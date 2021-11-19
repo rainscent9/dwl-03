@@ -27,12 +27,18 @@ def load_data_from_api():
     logging.info("End NEWS API call")
     normalized = pd.json_normalize(data, record_path='articles', max_level=1)
     df_news = pd.DataFrame(normalized)
+    logging.info("Data transformed to tabular form")
     df_news['keyword'] = keyword
+    df_news = df_news.rename({'urlToImage': 'url_image',
+                              'publishedAt': 'published_at',
+                              'source.id': 'source_id',
+                              'source.name': 'source_name'}, axis=1)
     ## connection to database
     engine = create_engine(
         'postgresql://simon:!GM4Ltcd@datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com:5432/datalake1')
     ## write dataframe to raw
-    df_news.to_sql('news_raw', engine, if_exists="append")
+    df_news.to_sql('news_raw', engine, if_exists="append", index = False)
+    logging.info("Data written to database")
 
 
 ## DAGS
