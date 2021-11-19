@@ -5,6 +5,7 @@ import psycopg2
 
 import datetime
 import logging
+import os
 
 from datetime import datetime
 from airflow import DAG
@@ -17,10 +18,10 @@ from airflow.hooks.postgres_hook import PostgresHook
 def extract_load_records():
     logging.info('extract & load tweets into Postgres')
     # connecting to twitter api
-    consumer_key = "Sg3OdyEDlPJztqKog2OdXKkKq"
-    consumer_secret = "T4kNzEyXR3TjviyO6KszpLo04XIQ1xgVBY6vjjz9WOwqUFZYeK"
-    access_token = "1448650203091771398-cJ925SBIY3ilFRYiWVrrs0QpdlX0lJ"
-    access_secret = "Ia1E69VkPx74DZkOume61yIZNYFZvjYM5CMw6QSsZ4OBu"
+    consumer_key = os.environ['consumer_key']
+    consumer_secret = os.environ['consumer_secret']
+    access_token =  os.environ['access_token']
+    access_secret = os.environ['access_secret']
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
@@ -35,11 +36,11 @@ def extract_load_records():
                                 include_entities=True).items(100000)
 
     # Connecting to postgres server
-    user = "simon"
-    password = "!GM4Ltcd"
-    host = "datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com"
-    port = "5432"
-    database = "datalake1"
+    user = os.environ['user']
+    password = os.environ['password']
+    host = os.environ['host']
+    port = os.environ['port']
+    database = os.environ['database']
     try:
         conn = psycopg2.connect(user=user,
                                 password=password,
