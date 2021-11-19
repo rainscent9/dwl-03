@@ -6,6 +6,7 @@ import psycopg2
 import datetime
 import logging
 
+from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator
@@ -90,11 +91,17 @@ def extract_load_records():
     cur.close()
     conn.close()
 
+default_args = {
+    'depends_on_past': True
+}
 
 dag = DAG(
-    'twitter_tweets',
-    schedule_interval='@hourly',
-    start_date=datetime.datetime.now()
+    dag_id='twitter_tweets',
+    schedule_interval='2 * * * *',
+    start_date=datetime(2021, 1, 1),
+    catchup=False,
+    default_args=default_args,
+    tags=['twitter'],
 )
 
 create_table = PostgresOperator(
@@ -112,4 +119,3 @@ extract_load = PythonOperator(
 
 
 create_table >> extract_load
-
