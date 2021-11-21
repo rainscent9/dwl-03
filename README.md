@@ -1,5 +1,5 @@
 # DWL-03 - Project Eldorado Monitoring Tool
-Janine Wiedemar, Filipe Ribeiro de Oliveira, Simon Bolzli
+Janine Wiedemar, Filipe Ribeiro de Oliveira, Simon Bolzli  
 Fall semester 2021
 
 ## Management Summary
@@ -30,4 +30,3 @@ sudo docker-compose up
 
 ### Check if instances are healthy in separate terminal
 sudo docker ps
-
