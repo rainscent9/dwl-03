@@ -20,6 +20,7 @@ cd docker-airflow
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.2.2/docker-compose.yaml'  
 mkdir ./dags ./plugins ./logs  
 echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env  
+NOTE: add necessary keys for DAGs in .env file
 
 ## Run Apache Airflow
 ### initialize airflow instance with .yaml file  
