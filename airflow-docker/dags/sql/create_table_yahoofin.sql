@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS yahoofin (
-    symbol text,
+CREATE TABLE IF NOT EXISTS yahoofinance (
+    symbol_short text,
     inserted timestamp(0) without time zone NOT NULL,
     language text,
     region text,
