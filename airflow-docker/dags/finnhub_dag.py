@@ -47,7 +47,7 @@ def get_data_api():
         print('Request Exception Error occured')
 
 default_args = {
-    'depends_on_past': True
+    'depends_on_past': False
 }
 
 dag = DAG(
