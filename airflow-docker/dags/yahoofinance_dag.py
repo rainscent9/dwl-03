@@ -58,7 +58,7 @@ def get_data_api():
 
 
 default_args = {
-    'depends_on_past': True
+    'depends_on_past': False
 }
 
 dag = DAG(
