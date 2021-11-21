@@ -2,7 +2,7 @@
 Janine Wiedemar, Filipe Ribeiro de Oliveira, Simon Bolzli  
 Fall semester 2021
 
-## Management Summary
+## Summary
 The result of this project is a monitoring tool called Eldorado Monitoring Tool, which collects data on the Internet about a specific company, as a demo case for Credit Suisse. As data sources we use NewsAPI, Twitter and Yahoo! Finance (replaced by Finnhub in the course of the project). The data is collected using Apache Airflow running on a physical Linux machine in Docker Compose. As a data store, we use Amazon RDS with PostgreSQL which also forms our data lake. The goal of the project is to monitor all news and mentions related to Credit Suisse and link them to stock price trends.
 
 ## Install Apache Airflow on Ubuntu 20.04 LTS
