@@ -8,6 +8,9 @@ The result of this project is a monitoring tool called Eldorado Monitoring Tool,
 ## Install Apache Airflow on Ubuntu 20.04 LTS
 Apache Airflow manages our DAGs. Every API has its own DAG. Installing Apache Airflow requires Docker Compose, the instructions by Marc Lamberti (15/10/2021) explain that in great detail https://www.youtube.com/watch?v=aTaytcxy2Ck.
 
+### Install docker
+https://docs.docker.com/engine/install/ubuntu/
+
 ### Install docker compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose  
 sudo chmod +x /usr/local/bin/docker-compose  
