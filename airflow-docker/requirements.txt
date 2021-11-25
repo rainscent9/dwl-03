@@ -1,17 +1,11 @@
-jupyter
-matplotlib
-scipy
 numpy
 pandas
-pymongo
 dnspython
 pymysql
 mysql-connector
 sqlalchemy
 requests
 beautifulsoup4
-nbconvert
-jupyter_contrib_nbextensions
 psycopg2-binary
 boto3
 requests
