@@ -1,0 +1,1559 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20214.21.1214.2057                               -->
+<workbook original-version='18.1' source-build='2021.4.1 (20214.21.1214.2057)' source-platform='win' version='18.1' xml:base='https://dub01.online.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location id='EldoradoMonitoring' path='/t/eldoradomonitor/workbooks' revision='1.3' site='eldoradomonitor' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style>
+    <_.fcp.MarkAnimation.true...style-rule element='animation'>
+      <format attr='animation-on' value='ao-off' />
+    </_.fcp.MarkAnimation.true...style-rule>
+  </style>
+  <datasources>
+    <datasource caption='finnhub' inline='true' name='federated.10tk174040owkb14j9v2k0jl76hr' version='18.1'>
+      <repository-location id='finnhub' path='datasources' revision='1.0' />
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com' name='postgres.1yfefty17utb291czxif41jlkx0a'>
+            <connection authentication='username-password' class='postgres' dbname='datalake1' one-time-sql='' port='5432' server='datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com' sslmode='require' username='simon' workgroup-auth-mode='prompt' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.1yfefty17utb291czxif41jlkx0a' name='Custom SQL Query' type='text'>SELECT * FROM finnhub_raw&#13;
+WHERE Inserted&gt;&gt;=current_date - interval &apos;7 days&apos;</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation connection='postgres.1yfefty17utb291czxif41jlkx0a' name='finnhub_raw' table='[public].[finnhub_raw]' type='table' />
+          <relation connection='postgres.1yfefty17utb291czxif41jlkx0a' name='Custom SQL Query' type='text'>SELECT * FROM finnhub_raw&#13;
+WHERE Inserted&gt;&gt;=current_date - interval &apos;7 days&apos;</relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[change (Custom SQL Query)]' value='[Custom SQL Query].[change]' />
+          <map key='[change]' value='[finnhub_raw].[change]' />
+          <map key='[current_price (Custom SQL Query)]' value='[Custom SQL Query].[current_price]' />
+          <map key='[current_price]' value='[finnhub_raw].[current_price]' />
+          <map key='[daily_high (Custom SQL Query)]' value='[Custom SQL Query].[daily_high]' />
+          <map key='[daily_high]' value='[finnhub_raw].[daily_high]' />
+          <map key='[daily_low (Custom SQL Query)]' value='[Custom SQL Query].[daily_low]' />
+          <map key='[daily_low]' value='[finnhub_raw].[daily_low]' />
+          <map key='[daily_opening (Custom SQL Query)]' value='[Custom SQL Query].[daily_opening]' />
+          <map key='[daily_opening]' value='[finnhub_raw].[daily_opening]' />
+          <map key='[inserted (Custom SQL Query)]' value='[Custom SQL Query].[inserted]' />
+          <map key='[inserted]' value='[finnhub_raw].[inserted]' />
+          <map key='[percent_change (Custom SQL Query)]' value='[Custom SQL Query].[percent_change]' />
+          <map key='[percent_change]' value='[finnhub_raw].[percent_change]' />
+          <map key='[previous_closing_price (Custom SQL Query)]' value='[Custom SQL Query].[previous_closing_price]' />
+          <map key='[previous_closing_price]' value='[finnhub_raw].[previous_closing_price]' />
+          <map key='[symbol (Custom SQL Query)]' value='[Custom SQL Query].[symbol]' />
+          <map key='[symbol]' value='[finnhub_raw].[symbol]' />
+          <map key='[timestamp_finnhub (Custom SQL Query)]' value='[Custom SQL Query].[timestamp_finnhub]' />
+          <map key='[timestamp_finnhub]' value='[finnhub_raw].[timestamp_finnhub]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>symbol</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[symbol]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>symbol</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>inserted</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[inserted]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>inserted</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_price</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[current_price]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>current_price</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>change</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[change]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>change</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_change</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[percent_change]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>percent_change</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_high</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_high]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>daily_high</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_low</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_low]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>daily_low</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_opening</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_opening]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>daily_opening</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>previous_closing_price</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[previous_closing_price]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>previous_closing_price</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>timestamp_finnhub</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[timestamp_finnhub]</local-name>
+            <parent-name>[finnhub_raw]</parent-name>
+            <remote-alias>timestamp_finnhub</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>25</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>symbol</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[symbol (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>symbol</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>inserted</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[inserted (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>inserted</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_price</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[current_price (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>current_price</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>change</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[change (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>change</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_change</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[percent_change (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>percent_change</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_high</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_high (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>daily_high</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_low</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_low (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>daily_low</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_opening</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_opening (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>daily_opening</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>previous_closing_price</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[previous_closing_price (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>previous_closing_price</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <scale>10</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>timestamp_finnhub</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[timestamp_finnhub (Custom SQL Query)]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>timestamp_finnhub</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>25</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_F845787DC06B48B4A957089B34A23B21]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='finnhub_last_7_days' datatype='table' name='[__tableau_internal_object_id__].[_F845787DC06B48B4A957089B34A23B21]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='finnhub_raw' datatype='table' name='[__tableau_internal_object_id__].[finnhub_raw_5E61277E4FBF4E45938AE83A06B84862]' role='measure' type='quantitative' />
+      <column caption='Change' datatype='real' name='[change]' role='measure' type='quantitative' />
+      <column datatype='real' name='[current_price (Custom SQL Query)]' role='measure' type='quantitative' />
+      <column caption='Current Price' datatype='real' name='[current_price]' role='measure' type='quantitative' />
+      <column datatype='real' name='[daily_high (Custom SQL Query)]' role='measure' type='quantitative' />
+      <column caption='Daily High' datatype='real' name='[daily_high]' role='measure' type='quantitative' />
+      <column datatype='real' name='[daily_low (Custom SQL Query)]' role='measure' type='quantitative' />
+      <column caption='Daily Low' datatype='real' name='[daily_low]' role='measure' type='quantitative' />
+      <column caption='Daily Opening' datatype='real' name='[daily_opening]' role='measure' type='quantitative' />
+      <column caption='Inserted' datatype='datetime' name='[inserted]' role='dimension' type='ordinal' />
+      <column caption='Percent Change' datatype='real' name='[percent_change]' role='measure' type='quantitative' />
+      <column caption='Previous Closing Price' datatype='real' name='[previous_closing_price]' role='measure' type='quantitative' />
+      <column caption='Symbol' datatype='string' name='[symbol]' role='dimension' type='nominal' />
+      <column caption='Timestamp Finnhub' datatype='real' name='[timestamp_finnhub]' role='measure' type='quantitative' />
+      <column-instance column='[current_price (Custom SQL Query)]' derivation='Attribute' name='[attr:current_price (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[daily_high (Custom SQL Query)]' derivation='Attribute' name='[attr:daily_high (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[daily_low (Custom SQL Query)]' derivation='Attribute' name='[attr:daily_low (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.10tk174040owkb14j9v2k0jl76hr].[attr:current_price (Custom SQL Query):qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.10tk174040owkb14j9v2k0jl76hr].[attr:daily_high (Custom SQL Query):qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.10tk174040owkb14j9v2k0jl76hr].[attr:daily_low (Custom SQL Query):qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='finnhub_last_7_days' id='_F845787DC06B48B4A957089B34A23B21'>
+            <properties context=''>
+              <relation connection='postgres.1yfefty17utb291czxif41jlkx0a' name='Custom SQL Query' type='text'>SELECT * FROM finnhub_raw&#13;
+WHERE Inserted&gt;&gt;=current_date - interval &apos;7 days&apos;</relation>
+            </properties>
+          </object>
+          <object caption='finnhub_raw' id='finnhub_raw_5E61277E4FBF4E45938AE83A06B84862'>
+            <properties context=''>
+              <relation connection='postgres.1yfefty17utb291czxif41jlkx0a' name='finnhub_raw' table='[public].[finnhub_raw]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[inserted]' />
+              <expression op='[inserted (Custom SQL Query)]' />
+            </expression>
+            <first-end-point object-id='finnhub_raw_5E61277E4FBF4E45938AE83A06B84862' />
+            <second-end-point object-id='_F845787DC06B48B4A957089B34A23B21' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='twitter &amp; news' inline='true' name='federated.0vwem3k1q4wcl915onajj1chgw5l' version='18.1'>
+      <repository-location id='twitternews' path='datasources' revision='1.0' />
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com' name='postgres.0ibnh100vly10c0zwqqlt151ml59'>
+            <connection authentication='username-password' class='postgres' dbname='datalake1' one-time-sql='' port='5432' server='datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com' sslmode='require' username='simon' workgroup-auth-mode='prompt' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.0ibnh100vly10c0zwqqlt151ml59' name='news' table='[public].[news]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation all='true' name='twitter+' type='union'>
+            <columns>
+              <column datatype='datetime' date-parse-format='yyyy-MM-dd HH:mm:ssZZZZZ' name='created_at' />
+            </columns>
+            <relation connection='postgres.0ibnh100vly10c0zwqqlt151ml59' name='twitter' table='[public].[twitter]' type='table'>
+              <columns>
+                <column datatype='datetime' date-parse-format='yyyy-MM-dd HH:mm:ssZZZZZ' name='created_at' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='postgres.0ibnh100vly10c0zwqqlt151ml59' name='news' table='[public].[news]' type='table' />
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>twitter_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[twitter_id]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>twitter_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>username</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[username]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>username</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_location</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[user_location]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>user_location</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>retweeted</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[retweeted]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>retweeted</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[text]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>text</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>number_followers</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[number_followers]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>number_followers</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>retweet_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[retweet_count]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>retweet_count</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>likes</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[likes]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>likes</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>media_source</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[media_source]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>media_source</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tweet_language</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[tweet_language]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>tweet_language</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Table Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Table Name]</local-name>
+            <parent-name>[twitter+]</parent-name>
+            <remote-alias>Table Name</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[twitter_0791A838149743179C76F715374C0CF0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>url</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[url]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>url</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>published_at</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[published_at]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>published_at</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>author</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[title]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>title</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>description</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[description]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>description</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>content</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[content]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>content</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>url_image</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[url_image]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>url_image</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>source_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[source_id]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>source_id</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>source_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[source_name]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>source_name</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>keyword</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[keyword]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>keyword</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>language</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[language]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>language</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sentiment_score</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[sentiment_score]</local-name>
+            <parent-name>[news]</parent-name>
+            <remote-alias>sentiment_score</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[news_D0EC905C2A204F44AE0DB8DBC1BD739B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='news' datatype='table' name='[__tableau_internal_object_id__].[news_D0EC905C2A204F44AE0DB8DBC1BD739B]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='twitter' datatype='table' name='[__tableau_internal_object_id__].[twitter_0791A838149743179C76F715374C0CF0]' role='measure' type='quantitative' />
+      <column caption='Author' datatype='string' name='[author]' role='dimension' type='nominal' />
+      <column caption='Content' datatype='string' name='[content]' role='dimension' type='nominal' />
+      <column aggregation='Count' caption='Created At' datatype='datetime' datatype-customized='true' name='[created_at]' role='dimension' type='ordinal' />
+      <column caption='Description' datatype='string' name='[description]' role='dimension' type='nominal' />
+      <column caption='Keyword' datatype='string' name='[keyword]' role='dimension' type='nominal' />
+      <column caption='Language' datatype='string' name='[language]' role='dimension' type='nominal' />
+      <column caption='Likes' datatype='integer' name='[likes]' role='measure' type='quantitative' />
+      <column caption='Media Source' datatype='string' name='[media_source]' role='dimension' type='nominal' />
+      <column caption='Number Followers' datatype='integer' name='[number_followers]' role='measure' type='quantitative' />
+      <column caption='Published At' datatype='datetime' name='[published_at]' role='dimension' type='ordinal' />
+      <column caption='Retweet Count' datatype='integer' name='[retweet_count]' role='measure' type='quantitative' />
+      <column caption='Retweeted' datatype='string' name='[retweeted]' role='dimension' type='nominal' />
+      <column caption='Sentiment Score' datatype='integer' name='[sentiment_score]' role='measure' type='quantitative' />
+      <column caption='Source Id' datatype='string' name='[source_id]' role='dimension' type='nominal' />
+      <column caption='Source Name' datatype='string' name='[source_name]' role='dimension' type='nominal' />
+      <column caption='Text' datatype='string' name='[text]' role='dimension' type='nominal' />
+      <column caption='Title' datatype='string' name='[title]' role='dimension' type='nominal' />
+      <column caption='Tweet Language' datatype='string' name='[tweet_language]' role='dimension' type='nominal' />
+      <column caption='Twitter Id' datatype='string' name='[twitter_id]' role='dimension' type='nominal' />
+      <column caption='Url' datatype='string' name='[url]' role='dimension' type='nominal' />
+      <column caption='Url Image' datatype='string' name='[url_image]' role='dimension' type='nominal' />
+      <column caption='User Id' datatype='string' name='[user_id]' role='dimension' type='nominal' />
+      <column caption='User Location' datatype='string' name='[user_location]' role='dimension' type='nominal' />
+      <column caption='Username' datatype='string' name='[username]' role='dimension' type='nominal' />
+      <column-instance column='[sentiment_score]' derivation='Avg' name='[avg:sentiment_score:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[url]' derivation='Count' name='[cnt:url:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[sentiment_score]' derivation='Sum' name='[sum:sentiment_score:qk]' pivot='key' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[sum:sentiment_score:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;USA&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='news' id='news_D0EC905C2A204F44AE0DB8DBC1BD739B'>
+            <properties context=''>
+              <relation connection='postgres.0ibnh100vly10c0zwqqlt151ml59' name='news' table='[public].[news]' type='table' />
+            </properties>
+          </object>
+          <object caption='twitter' id='twitter_0791A838149743179C76F715374C0CF0'>
+            <properties context=''>
+              <relation all='true' name='twitter+' type='union'>
+                <columns>
+                  <column datatype='datetime' date-parse-format='yyyy-MM-dd HH:mm:ssZZZZZ' name='created_at' />
+                </columns>
+                <relation connection='postgres.0ibnh100vly10c0zwqqlt151ml59' name='twitter' table='[public].[twitter]' type='table'>
+                  <columns>
+                    <column datatype='datetime' date-parse-format='yyyy-MM-dd HH:mm:ssZZZZZ' name='created_at' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[created_at]' />
+              <expression op='[published_at]' />
+            </expression>
+            <first-end-point object-id='twitter_0791A838149743179C76F715374C0CF0' />
+            <second-end-point object-id='news_D0EC905C2A204F44AE0DB8DBC1BD739B' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='news &amp; sentiment'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Developement over time: Public interest vs.
+ Avg. Sentiment</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='twitter &amp; news' name='federated.0vwem3k1q4wcl915onajj1chgw5l' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vwem3k1q4wcl915onajj1chgw5l'>
+            <column-instance column='[sentiment_score]' derivation='Avg' name='[avg:sentiment_score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[url]' derivation='Count' name='[cnt:url:qk]' pivot='key' type='quantitative' />
+            <column caption='Published At' datatype='datetime' name='[published_at]' role='dimension' type='ordinal' />
+            <column caption='Sentiment Score' datatype='integer' name='[sentiment_score]' role='measure' type='quantitative' />
+            <column-instance column='[published_at]' derivation='Day-Trunc' name='[tdy:published_at:qk]' pivot='key' type='quantitative' />
+            <column caption='Url' datatype='string' name='[url]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]' field-type='quantitative' fold='true' major-origin='0.0' major-spacing='0.5' max='1.2' min='-1.2' minor-origin='0.0' minor-spacing='0.10000000000000001' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]' field-type='quantitative' major-origin='1' major-spacing='2' min='-1' range-type='fixedmin' scale='log' scope='rows' type='space' />
+            <format attr='width' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]' value='60' />
+            <format attr='width' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]' value='60' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]' value='n#,##0.00;-#,##0.00' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk] + [federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk])</rows>
+        <cols>[federated.0vwem3k1q4wcl915onajj1chgw5l].[tdy:published_at:qk]</cols>
+      </table>
+      <simple-id uuid='{2BB3F009-E71F-4EA5-B4DA-9A60595394A8}' />
+    </worksheet>
+    <worksheet name='news vs twitter count'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Developement of sentiments over time</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='twitter &amp; news' name='federated.0vwem3k1q4wcl915onajj1chgw5l' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vwem3k1q4wcl915onajj1chgw5l'>
+            <column-instance column='[__tableau_internal_object_id__].[news_D0EC905C2A204F44AE0DB8DBC1BD739B]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:news_D0EC905C2A204F44AE0DB8DBC1BD739B:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.false...column caption='news' datatype='integer' name='[__tableau_internal_object_id__].[news_D0EC905C2A204F44AE0DB8DBC1BD739B]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[twitter_0791A838149743179C76F715374C0CF0]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:twitter_0791A838149743179C76F715374C0CF0:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.false...column caption='twitter' datatype='integer' name='[__tableau_internal_object_id__].[twitter_0791A838149743179C76F715374C0CF0]' role='measure' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='news' datatype='table' name='[__tableau_internal_object_id__].[news_D0EC905C2A204F44AE0DB8DBC1BD739B]' role='measure' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='twitter' datatype='table' name='[__tableau_internal_object_id__].[twitter_0791A838149743179C76F715374C0CF0]' role='measure' type='quantitative' />
+            <column caption='Published At' datatype='datetime' name='[published_at]' role='dimension' type='ordinal' />
+            <column-instance column='[published_at]' derivation='Day-Trunc' name='[tdy:published_at:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0vwem3k1q4wcl915onajj1chgw5l].[__tableau_internal_object_id__].[cnt:news_D0EC905C2A204F44AE0DB8DBC1BD739B:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0vwem3k1q4wcl915onajj1chgw5l].[__tableau_internal_object_id__].[cnt:twitter_0791A838149743179C76F715374C0CF0:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.0vwem3k1q4wcl915onajj1chgw5l].[__tableau_internal_object_id__].[cnt:news_D0EC905C2A204F44AE0DB8DBC1BD739B:qk] + [federated.0vwem3k1q4wcl915onajj1chgw5l].[__tableau_internal_object_id__].[cnt:twitter_0791A838149743179C76F715374C0CF0:qk])</rows>
+        <cols>[federated.0vwem3k1q4wcl915onajj1chgw5l].[tdy:published_at:qk]</cols>
+      </table>
+      <simple-id uuid='{92C03D5C-BE67-46CF-9A34-FA9BCA7B73B8}' />
+    </worksheet>
+    <worksheet name='source &amp; sentiment'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Source: no of articles vs avg. sentiment</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='twitter &amp; news' name='federated.0vwem3k1q4wcl915onajj1chgw5l' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vwem3k1q4wcl915onajj1chgw5l'>
+            <column-instance column='[sentiment_score]' derivation='Avg' name='[avg:sentiment_score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[url]' derivation='Count' name='[cnt:url:qk]' pivot='key' type='quantitative' />
+            <column caption='Language' datatype='string' name='[language]' role='dimension' type='nominal' />
+            <column-instance column='[language]' derivation='None' name='[none:language:nk]' pivot='key' type='nominal' />
+            <column-instance column='[source_name]' derivation='None' name='[none:source_name:nk]' pivot='key' type='nominal' />
+            <column caption='Sentiment Score' datatype='integer' name='[sentiment_score]' role='measure' type='quantitative' />
+            <column caption='Source Name' datatype='string' name='[source_name]' role='dimension' type='nominal' />
+            <column caption='Url' datatype='string' name='[url]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[none:language:nk]'>
+            <groupfilter function='member' level='[none:language:nk]' member='&quot;en&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0vwem3k1q4wcl915onajj1chgw5l].[none:source_name:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:url:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0vwem3k1q4wcl915onajj1chgw5l].[none:language:nk]</column>
+            <column>[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]' value='81' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' center='0.0' field='[federated.0vwem3k1q4wcl915onajj1chgw5l].[avg:sentiment_score:qk]' num-steps='50' palette='orange_blue_white_diverging_10_0' symmetric='false' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0vwem3k1q4wcl915onajj1chgw5l].[none:source_name:nk]</rows>
+        <cols>[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]</cols>
+      </table>
+      <simple-id uuid='{48225156-B451-4768-AA2C-DF16C5219903}' />
+    </worksheet>
+    <worksheet name='stock'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>CS Stock Price</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='finnhub' name='federated.10tk174040owkb14j9v2k0jl76hr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.10tk174040owkb14j9v2k0jl76hr'>
+            <column-instance column='[current_price (Custom SQL Query)]' derivation='Attribute' name='[attr:current_price (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[daily_high (Custom SQL Query)]' derivation='Attribute' name='[attr:daily_high (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[daily_low (Custom SQL Query)]' derivation='Attribute' name='[attr:daily_low (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[current_price (Custom SQL Query)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[daily_high (Custom SQL Query)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[daily_low (Custom SQL Query)]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[inserted (Custom SQL Query)]' role='dimension' type='ordinal' />
+            <column-instance column='[inserted (Custom SQL Query)]' derivation='None' name='[none:inserted (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.10tk174040owkb14j9v2k0jl76hr].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.10tk174040owkb14j9v2k0jl76hr].[attr:current_price (Custom SQL Query):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.10tk174040owkb14j9v2k0jl76hr].[attr:daily_high (Custom SQL Query):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.10tk174040owkb14j9v2k0jl76hr].[attr:daily_low (Custom SQL Query):qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[federated.10tk174040owkb14j9v2k0jl76hr].[none:inserted (Custom SQL Query):qk]' included-values='in-range'>
+            <min>#2021-12-17 17:00:00#</min>
+            <max>#2021-12-18 18:00:08#</max>
+          </filter>
+          <slices>
+            <column>[federated.10tk174040owkb14j9v2k0jl76hr].[:Measure Names]</column>
+            <column>[federated.10tk174040owkb14j9v2k0jl76hr].[none:inserted (Custom SQL Query):qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.10tk174040owkb14j9v2k0jl76hr].[Multiple Values]' field-type='quantitative' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height-header' value='112' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#ffffff' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.10tk174040owkb14j9v2k0jl76hr].[none:inserted (Custom SQL Query):qk]' value='Time Range'>
+              <formatted-text>
+                <run>Time Range</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.10tk174040owkb14j9v2k0jl76hr].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2853591442108154' />
+                <format attr='line-interpolation' value='step' />
+                <format attr='mark-color' value='#f28e2b' />
+                <format attr='mark-markers-mode' value='none' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='490' />
+                <format attr='maxwidth' value='490' />
+                <format attr='minheight' value='253' />
+                <format attr='maxheight' value='253' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.10tk174040owkb14j9v2k0jl76hr].[Multiple Values]</rows>
+        <cols>[federated.10tk174040owkb14j9v2k0jl76hr].[none:inserted (Custom SQL Query):qk]</cols>
+      </table>
+      <simple-id uuid='{D32D069E-91E4-4758-BAC8-1369045A4915}' />
+    </worksheet>
+    <worksheet name='wordcloud source'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='twitter &amp; news' name='federated.0vwem3k1q4wcl915onajj1chgw5l' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vwem3k1q4wcl915onajj1chgw5l'>
+            <column-instance column='[source_name]' derivation='Count' name='[cnt:source_name:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[source_name]' derivation='None' name='[none:source_name:nk]' pivot='key' type='nominal' />
+            <column caption='Source Name' datatype='string' name='[source_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[cnt:source_name:qk]' />
+              <text column='[federated.0vwem3k1q4wcl915onajj1chgw5l].[none:source_name:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6EEF2924-6657-4D7E-8345-DF2FA62B8127}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Eldorado Monitor</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#f5f5f5' />
+        </style-rule>
+        <style-rule element='dash-title'>
+          <format attr='background-color' value='#ffffff' />
+          <format attr='border-style' value='solid' />
+          <format attr='border-width' value='3' />
+          <format attr='border-color' value='#b4b4b4' />
+        </style-rule>
+        <style-rule element='dash-subtitle'>
+          <format attr='font-family' value='Corbel' />
+        </style-rule>
+      </style>
+      <size maxheight='900' maxwidth='1300' minheight='900' minwidth='1300' sizing-mode='fixed' />
+      <datasources>
+        <datasource caption='finnhub' name='federated.10tk174040owkb14j9v2k0jl76hr' />
+      </datasources>
+      <datasource-dependencies datasource='federated.10tk174040owkb14j9v2k0jl76hr'>
+        <column datatype='datetime' name='[inserted (Custom SQL Query)]' role='dimension' type='ordinal' />
+        <column-instance column='[inserted (Custom SQL Query)]' derivation='None' name='[none:inserted (Custom SQL Query):qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98222' id='21' param='horz' type-v2='layout-flow' w='98770' x='615' y='889'>
+            <zone h='98222' id='19' type-v2='layout-basic' w='98770' x='615' y='889'>
+              <zone h='88778' id='13' param='vert' type-v2='layout-flow' w='98770' x='615' y='10333'>
+                <zone h='88778' id='7' param='horz' type-v2='layout-flow' w='98770' x='615' y='10333'>
+                  <zone h='88778' id='5' type-v2='layout-basic' w='98770' x='615' y='10333'>
+                    <zone h='88778' id='3' name='stock' w='73075' x='615' y='10333'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='80445' id='8' name='stock' pane-specification-id='4' param='[federated.10tk174040owkb14j9v2k0jl76hr].[:Measure Names]' type-v2='color' w='25695' x='73690' y='18666'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='8333' id='22' name='stock' param='[federated.10tk174040owkb14j9v2k0jl76hr].[none:inserted (Custom SQL Query):qk]' type-v2='filter' values='database' w='25695' x='73690' y='10333'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                </zone>
+              </zone>
+              <zone h='9444' id='18' param='horz' type-v2='layout-flow' w='98770' x='615' y='889'>
+                <zone fixed-size='577' h='9444' id='14' is-fixed='true' type-v2='title' w='44385' x='615' y='889'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='9444' id='15' is-centered='0' is-scaled='1' param='C:/Users/simub/switchdrive/Private/HS21/DWL03 Data Warehouse and Data Lakes/logo_eldorado_2021-12-18_20-05-30.png' type-v2='bitmap' w='54385' x='45000' y='889'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run>Eldorado Monitor</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='17' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98222' id='16' param='vert' type-v2='layout-flow' w='98770' x='615' y='889'>
+                <zone h='5556' id='14' type-v2='title' w='98770' x='615' y='13889'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='109' h='13000' id='15' is-fixed='true' is-scaled='1' param='C:/Users/simub/switchdrive/Private/HS21/DWL03 Data Warehouse and Data Lakes/logo_eldorado_2021-12-18_20-05-30.png' type-v2='bitmap' w='98770' x='615' y='889'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='79666' id='3' is-fixed='true' name='stock' w='73076' x='615' y='19445'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='79666' id='8' name='stock' pane-specification-id='4' param='[federated.10tk174040owkb14j9v2k0jl76hr].[:Measure Names]' type-v2='color' w='25694' x='73691' y='19445'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{45A00406-9FB3-4C7A-91CF-F8758BEDEE94}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='63'>
+    <window class='worksheet' name='news vs twitter count'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3DE76497-E37B-4100-B698-04B8FDAFC70D}' />
+    </window>
+    <window class='worksheet' name='news &amp; sentiment'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0vwem3k1q4wcl915onajj1chgw5l].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{ABC3CD32-7622-4078-82FF-F08793233AC4}' />
+    </window>
+    <window class='worksheet' name='source &amp; sentiment'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{90A420EB-F33A-4120-8651-F24FA1ACE35C}' />
+    </window>
+    <window class='worksheet' name='wordcloud source'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1CD7D884-B594-43F6-A54B-112CEC983464}' />
+    </window>
+    <window class='worksheet' name='stock'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='300'>
+            <card param='[federated.10tk174040owkb14j9v2k0jl76hr].[none:inserted (Custom SQL Query):qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card pane-specification-id='4' param='[federated.10tk174040owkb14j9v2k0jl76hr].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A5045E96-4DD5-4793-B592-04DD19AAB2E2}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='stock'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='8' />
+      <simple-id uuid='{0A5C7430-4635-4E78-A216-2BD94FAC10BB}' />
+    </window>
+  </windows>
+</workbook>

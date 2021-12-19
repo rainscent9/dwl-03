@@ -52,6 +52,7 @@ default_args = {
 
 dag = DAG(
     dag_id='finnhub_dag',
+    ## Execute every 2 hours (limitation of free account)
     schedule_interval='0 */2 * * *',
     start_date=datetime(2021, 1, 1),
     catchup=False,
