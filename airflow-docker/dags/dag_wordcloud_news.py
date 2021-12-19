@@ -11,30 +11,18 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator
 
-
-## set connection parameter for DB
-user = 'simon'
-password = '!GM4Ltcd'
-host = 'datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com'
-port = '5432'
-database = "datalake1"
-
-
-
-
 def create_wordcloud():
     '''Get data from database and create word cloud '''
-
     ## CONNECTION
     ## connection to database
     try:
         # connect to the PostgreSQL server
         print('Start connection')
-        conn = psycopg2.connect(user=user,
-                                password=password,
-                                host=host,
-                                port=port,
-                                database=database)
+        conn = psycopg2.connect(user=os.environ['db_user'],
+                                password=os.environ['db_password'],
+                                host=os.environ['db_host'],
+                                port=os.environ['db_port'],
+                                database=os.environ['db_database'])
         conn.set_session(autocommit=True)
         logging.info('Connection successful')
 
@@ -118,9 +106,7 @@ def create_wordcloud():
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
 
-
 ## DAGS
-
 dag = DAG(
     'news.cleaning',
     schedule_interval='@daily',
@@ -139,8 +125,6 @@ word_cloud = PythonOperator(
      task_id='word_cloud',
      dag=dag,
      python_callable=create_wordcloud)
-
-
 
 
 ## Connect tasks

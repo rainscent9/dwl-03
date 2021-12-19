@@ -16,13 +16,6 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator
 
 
-## set connection parameter for DB
-user = 'simon'
-password = '!GM4Ltcd'
-host = 'datalake-1.cjwwzyskcblj.us-east-1.rds.amazonaws.com'
-port = '5432'
-database = "datalake1"
-
 ## Define Function for sentiment Analysis
 def sentiment_score(text):
   analysis = TextBlob(text)
@@ -40,11 +33,11 @@ def rough_cleaning():
     try:
         # connect to the PostgreSQL server
         print('Start connection')
-        conn = psycopg2.connect(user=user,
-                                password=password,
-                                host=host,
-                                port=port,
-                                database=database)
+        conn = psycopg2.connect(user=os.environ['db_user'],
+                                password=os.environ['db_password'],
+                                host=os.environ['db_host'],
+                                port=os.environ['db_port'],
+                                database=os.environ['db_database'])
         conn.set_session(autocommit=True)
         logging.info('Connection successful')
 
@@ -61,34 +54,17 @@ def rough_cleaning():
         logging.info(error)
 
     ## read data from database
-    df_news_clean = pd.read_sql_query("SELECT content, url FROM news", conn) ## read data into df
+    df_news_clean = pd.read_sql_query("SELECT * FROM news", conn) ## read data into df
 
-    ## clean content
+    # cleaning
+    df_news_clean['content'].replace('<ul>', '', inplace=True, regex=True)
+    df_news_clean['content'].replace('<li>', '', inplace=True, regex=True)
+    df_news_clean['content'].replace('</ul>', '', inplace=True, regex=True)
+    df_news_clean['content'].replace('</li>', '', inplace=True, regex=True)
+    df_news_clean['content'].replace(r'\[\+\d*? chars\]$', '', inplace=True, regex=True)
     df_news_clean['content'] = df_news_clean['content'].str.lower()
-    df_news_clean['content'].replace('et\scontents\:.*$','',inplace=True, regex=True)
-    df_news_clean['content'].replace('(call\sparticipants)','',inplace=True, regex=True)
-    df_news_clean['content'].replace(r'\[\+\d*? chars\]$','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\\r\\n\\n',' ',inplace=True, regex=True)
-    df_news_clean['content'].replace('\\r\\n',' ',inplace=True, regex=True)
-    df_news_clean['content'].replace(r'image\ssource\:\sthe\smotley\sfool\.','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\(bloomberg\)\s\-\-','',inplace=True, regex=True)
-    df_news_clean['content'].replace('<a href=(.*)</a> ','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\-\-\(business wire\)\-\-','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\(reuters\)','',inplace=True, regex=True)
-    df_news_clean['content'].replace('^(by reuters staff)','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\(bloomberg\)','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\(globe newswire\)\s\-\-','',inplace=True, regex=True)
-    df_news_clean['content'].replace(r'\-\-','',inplace=True, regex=True)
-    df_news_clean['content'].replace('(\w{3}\s\d\d?\s\-)','',inplace=True, regex=True)
-    df_news_clean['content'].replace('^(\w*/istock\svia\sgetty\simages)','',inplace=True, regex=True)
-    df_news_clean['content'].replace('^(\(photo\:\sunsplash\))','',inplace=True, regex=True)
-    df_news_clean['content'].replace('<ul>','',inplace=True, regex=True)
-    df_news_clean['content'].replace('<li>','',inplace=True, regex=True)
-    df_news_clean['content'].replace('</ul>','',inplace=True, regex=True)
-    df_news_clean['content'].replace('</li>','',inplace=True, regex=True)
-    df_news_clean['content'].replace(r'\(europa press\)','',inplace=True, regex=True)
-    df_news_clean['content'].replace(r'/prnewswire/','',inplace=True, regex=True)
-    df_news_clean['content'].replace('\\sgetty\simages/istockphoto','',inplace=True, regex=True)
+    df_news_clean['title'] = df_news_clean['title'].str.lower()
+    df_news_clean['description'] = df_news_clean['description'].str.lower()
 
     ## insert amended values into tuple in to update table
     update_content = tuple(df_news_clean[['content', 'url']].apply(tuple, axis=1))
@@ -115,11 +91,11 @@ def language_detection():
     try:
         # connect to the PostgreSQL server
         print('Start connection')
-        conn = psycopg2.connect(user=user,
-                                password=password,
-                                host=host,
-                                port=port,
-                                database=database)
+        conn = psycopg2.connect(user=os.environ['db_user'],
+                                password=os.environ['db_password'],
+                                host=os.environ['db_host'],
+                                port=os.environ['db_port'],
+                                database=os.environ['db_database'])
         conn.set_session(autocommit=True)
         logging.info('Connection successful')
 
@@ -162,11 +138,11 @@ def sentiment_detection():
     try:
         # connect to the PostgreSQL server
         print('Start connection')
-        conn = psycopg2.connect(user=user,
-                                password=password,
-                                host=host,
-                                port=port,
-                                database=database)
+        conn = psycopg2.connect(user=os.environ['db_user'],
+                                password=os.environ['db_password'],
+                                host=os.environ['db_host'],
+                                port=os.environ['db_port'],
+                                database=os.environ['db_database'])
         conn.set_session(autocommit=True)
         logging.info('Connection successful')
 
