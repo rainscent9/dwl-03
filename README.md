@@ -12,25 +12,47 @@ Apache Airflow manages our DAGs. Every API has its own DAG. Installing Apache Ai
 https://docs.docker.com/engine/install/ubuntu/
 
 ### Install docker compose
+```Shell
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose  
 sudo chmod +x /usr/local/bin/docker-compose  
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose  
 docker-compose --version  
+```
 
 ### Install airflow in docker
+```Shell
 mkdir docker-airflow  
 cd docker-airflow  
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.2.2/docker-compose.yaml'  
 mkdir ./dags ./plugins ./logs  
 echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env  
+```
 NOTE: add necessary keys for DAGs in .env file
 
 ## Run Apache Airflow
 ### initialize airflow instance with .yaml file  
+```Shell
 sudo docker-compose up airflow-init  
+```
 
 ### Run airflow
+```Shell
 sudo docker-compose up  
+```
 
 ### Check if instances are healthy in separate terminal
+```Shell
 sudo docker ps  
+```
+
+## Trouble shooting
+### Airflow is not running anymore
+Delete all containers and restart.  
+```Shell
+docker-compose down --volumes --rmi all  
+docker-compose up
+```
+
+### Check memory usage
+If the machine runs into memory excepions (error 28) it can't install docker containers propperly and will try forever and ever and ever, not stopping.  
+First remove unused files and then enter "docker-compose up" again.
