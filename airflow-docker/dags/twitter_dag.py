@@ -93,7 +93,7 @@ def extract_load_records():
     conn.close()
 
 default_args = {
-    'depends_on_past': True
+    'depends_on_past': False
 }
 
 dag = DAG(

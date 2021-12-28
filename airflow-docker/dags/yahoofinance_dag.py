@@ -20,6 +20,7 @@ import datetime
 import logging
 import requests
 import json
+import os
 
 from datetime import datetime
 from airflow import DAG
@@ -37,7 +38,7 @@ def get_data_api():
                    'region': 'US',
                    'lang': 'en-US'}
     headers = {'accept': 'application/json',
-               'x-api-key': 'TZ1z5Ndk7010iPfALDXa15jAIuLnzLVD2DSFik9e'}
+               'x-api-key': os.environ['yahoo_apikey']}
     try:
         logging.info('Start reading API')
         response = requests.get(url, headers=headers, params=querystring, timeout=5)
@@ -57,7 +58,7 @@ def get_data_api():
 
 
 default_args = {
-    'depends_on_past': True
+    'depends_on_past': False
 }
 
 dag = DAG(

@@ -15,6 +15,7 @@ import datetime
 import logging
 import requests
 import json
+import os
 
 from datetime import datetime
 from airflow import DAG
@@ -29,7 +30,7 @@ def start():
 def get_data_api():
     url = 'https://finnhub.io/api/v1/quote?'
     querystring = {'symbol': 'CS',
-                   'token': 'c66gr5qad3icr57jgts0'}
+                   'token': os.environ['finnhub_apikey']}
     try:
         response = requests.get(url, params=querystring, timeout=5)
         response.raise_for_status()
@@ -46,11 +47,12 @@ def get_data_api():
         print('Request Exception Error occured')
 
 default_args = {
-    'depends_on_past': True
+    'depends_on_past': False
 }
 
 dag = DAG(
     dag_id='finnhub_dag',
+    ## Execute every 2 hours (limitation of free account)
     schedule_interval='0 */2 * * *',
     start_date=datetime(2021, 1, 1),
     catchup=False,
