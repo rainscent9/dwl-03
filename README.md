@@ -1,9 +1,18 @@
-# DWL-03 - Project Eldorado Monitoring Tool
-Janine Wiedemar, Filipe Ribeiro de Oliveira, Simon Bolzli  
+# Project Eldorado Monitoring Tool
+HSLU MScIDS, Module Data Warehousing and Data Lake Systems   
+Authors: Janine Wiedemar, Filipe Ribeiro de Oliveira, Simon Bolzli  
 Fall semester 2021
 
 ## Summary
-The result of this project is a monitoring tool called Eldorado Monitoring Tool, which collects data on the Internet about a specific company, as a demo case for Credit Suisse. As data sources we use NewsAPI, Twitter and Yahoo! Finance (replaced by Finnhub in the course of the project). The data is collected using Apache Airflow running on a physical Linux machine in Docker Compose. As a data store, we use Amazon RDS with PostgreSQL which also forms our data lake. The goal of the project is to monitor all news and mentions related to Credit Suisse and link them to stock price trends.
+The result of this project is a monitoring tool called Eldorado Monitoring Tool, which collects data on the Internet about a specific company, as a demo case for Credit Suisse. As data sources we use NewsAPI, Twitter and Finnhub. The data is collected using Apache Airflow running on a virtual Linux machine in Docker Compose. As a data store, we use Amazon RDS with PostgreSQL which also forms our data lake. The goal of the project is to monitor all news and mentions related to Credit Suisse run a segment analysis and link them to stock price. This porject can easily be modified to gather data for other companies.
+
+### Dashboard
+The online Tableau Dashboard shows the collected data of the last 24h. 
+![Dashboard](Tableau/img/dashboard.png?raw=true)
+
+### Warnings
+When the stock price falls below a certain threshold the user receives an email with a warning. This mechanism was automated with Tableau Online.
+![Dashboard](Tableau/img/warning_email.png?raw=true)
 
 ## Install Apache Airflow on Ubuntu 20.04 LTS
 Apache Airflow manages our DAGs. Every API has its own DAG. Installing Apache Airflow requires Docker Compose, the instructions by Marc Lamberti (15/10/2021) explain that in great detail https://www.youtube.com/watch?v=aTaytcxy2Ck.
