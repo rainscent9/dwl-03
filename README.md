@@ -29,10 +29,15 @@ docker-compose --version
 ```
 
 ### Install airflow in docker
+Skip this part if you want to build this project.  
 ```Shell
 mkdir docker-airflow  
 cd docker-airflow  
-curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.2.2/docker-compose.yaml'  
+
+## Latest version of Airflow can be found here:
+## https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.2.2/docker-compose.yaml'
+
 mkdir ./dags ./plugins ./logs  
 echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env  
 ```
