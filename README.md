@@ -4,7 +4,8 @@ Authors: Janine Wiedemar, Filipe Ribeiro de Oliveira, Simon Bolzli
 Fall semester 2021
 
 ## Summary
-The result of this project is a monitoring tool called Eldorado Monitoring Tool, which collects data on the Internet about a specific company, as a demo case for Credit Suisse. As data sources we use NewsAPI, Twitter and Finnhub. The data is collected using Apache Airflow running on a virtual Linux machine in Docker Compose. As a data store, we use Amazon RDS with PostgreSQL which also forms our data lake. The goal of the project is to monitor all news and mentions related to Credit Suisse run a segment analysis and link them to stock price. This porject can easily be modified to gather data for other companies.
+During the module Data Warehouse and Data Lake Systems 1 and 2 we created the monitoring tool called Eldorado. It collects data on the Internet about the news and social media mentioning of a company – Credit Suisse acts as a demo use case.  
+As data sources, we use NewsAPI, Twitter and Finnhub. The data is collected using Python scripts in Apache Airflow running on an Ubuntu virtual machine in Docker Compose. To store the data, we built a data lake on Amazon Web Services. For the data lake we use Amazon RDS with PostgreSQL as a database. Finally, the data is visualized via a dashboarding solution on Tableau Online – enabling the company to monitor news and mentions related to the brand and link them to stock price trends.
 
 ### Dashboard
 The online Tableau Dashboard shows the collected data of the last 24h. 
